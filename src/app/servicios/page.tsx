@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import MotionWrapper from "@/components/MotionWrapper";
 import { SiWhatsapp } from "react-icons/si";

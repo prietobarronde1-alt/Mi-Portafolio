@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - David Eduardo Prieto Barrón</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #334155;
+            background: #fbfcfe;
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+                max-width: 100%;
+                background: #fff;
+            }
+
+            .summary {
+                background: #f1f5f9 !important;
+            }
+
+            .sidebar {
+                background: #f8fafc !important;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            a {
+                color: #334155;
+                text-decoration: none;
+            }
+        }
+
+        /* Header */
+        header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #0f172a;
+            margin-bottom: 4px;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Summary */
+        .summary {
+            background: #f1f5f9;
+            padding: 15px 20px;
+            border-left: 4px solid #3b82f6;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #475569;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .metric {
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+        }
+
+        /* Layout Grid */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 0;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Typography */
+        h2 {
+            font-size: 16px;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 2px solid #3b82f6;
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-bottom: 20px;
+        }
+
+        main {
+            padding: 30px;
+        }
+
+        /* Sidebar Sections */
+        .sidebar {
+            background: #f8fafc;
+            padding: 30px;
+            border-left: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .skill-category {
+            margin-bottom: 15px;
+        }
+
+        .skill-category h4 {
+            font-size: 12px;
+            color: #2563eb;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 20px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .job-company {
+            font-size: 14px;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .job-date {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .job p {
+            font-size: 13.5px;
+            color: #475569;
+            margin-bottom: 5px;
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        li {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .edu-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .edu-school {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* Utils */
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ PDF</button>
+
+    <header>
+        <div style="display: flex; gap: 25px; align-items: center;">
+            <img src="public/profile.jpeg" alt="David Prieto"
+                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #f1f5f9;">
+            <div style="flex: 1;">
+                <h1>David Eduardo Prieto Barrón</h1>
+                <div class="subtitle">Senior Full-Stack Engineer & Data Strategist</div>
+                <div class="contact-info">
+                    <span>📧 prietobarron.de1@gmail.com</span>
+                    <span>📱 664-223-4345</span>
+                    <span>📍 Tijuana, MX</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="summary">
+        8+ años transformando datos en soluciones de negocio reales. Comenzando como DBA y Analista de BI, diseño
+        sistemas que entienden profundamente la operación del negocio.
+    </div>
+
+    <div class="metrics">
+        <div class="metric">
+            <div class="metric-value">+8</div>
+            <div class="metric-label">Años Exp.</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">70%</div>
+            <div class="metric-label">Eficiencia BI</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">40%</div>
+            <div class="metric-label">Tiempo Inv.</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">+10</div>
+            <div class="metric-label">Sistemas</div>
+        </div>
+    </div>
+
+    <div class="cv-grid">
+        <!-- Main Column -->
+        <main>
+            <section>
+                <h2>Experiencia Profesional</h2>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Analista de Datos / Full-Stack</h3>
+                        <span class="job-date">2025 - Pres.</span>
+                    </div>
+                    <div class="job-company">Aceros Frontera</div>
+                    <p>Liderando modernización tecnológica y "Cero Papel".</p>
+                    <ul>
+                        <li><strong>CRM/ERP Sync:</strong> Sistema Python/Next.js centralizando gestión de +1,000
+                            clientes.</li>
+                        <li><strong>Live Dashboards:</strong> Pipelines de datos conectando ERP Legacy Kepler en tiempo
+                            real.</li>
+                        <li><strong>PWA Inventarios:</strong> App móvil con escaneo de barcodes (40% ahorro en tiempos).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Coordinador Ciencia de Datos</h3>
+                        <span class="job-date">2022 - 2025</span>
+                    </div>
+                    <div class="job-company">Guga Mercantil</div>
+                    <ul>
+                        <li>Dashboards Power BI reduciendo generación de reportes mensuales en 70%.</li>
+                        <li>Automatización ETL (SQL/Python) ahorrando +15h semanales.</li>
+                        <li>Migración crítica de datos históricos (10 años) durante cambio de ERP.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Administrador de BD (DBA)</h3>
+                        <span class="job-date">2016 - 2021</span>
+                    </div>
+                    <div class="job-company">MDY Contact Center</div>
+                    <ul>
+                        <li>Admin SQL Server para operaciones 24/7 (+200 agentes).</li>
+                        <li>Query Tuning optimizando reportes críticos en un 300%.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <section>
+                <h2>Habilidades</h2>
+
+                <div class="skill-category">
+                    <h4>Web & Frontend</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Next.js 14</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Tailwind</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Backend & Data</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4>BI & Analytics</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">DAX</span>
+                        <span class="skill-tag">ETL</span>
+                        <span class="skill-tag">Excel VBA</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Educación</h2>
+                <div class="education-item">
+                    <div class="edu-title">Ing. Desarrollo de Software</div>
+                    <div class="edu-school">CESUN (En curso, 5to cuat.)</div>
+                </div>
+                <div class="education-item">
+                    <div class="edu-title">Técnico Programador</div>
+                    <div class="edu-school">CECYTE (2015)</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Idiomas</h2>
+                <div style="font-size: 13px; color: #475569;">
+                    <p><strong>Español:</strong> Nativo</p>
+                    <p><strong>Inglés:</strong> Técnico Avanzado</p>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+</body>
+
+</html>

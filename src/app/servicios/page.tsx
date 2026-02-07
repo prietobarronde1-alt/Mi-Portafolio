@@ -6,7 +6,7 @@ import { SiWhatsapp } from "react-icons/si";
 import { FaPaperPlane, FaCode, FaChartLine, FaCheck, FaStar, FaBolt, FaFingerprint, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ThemeToggle from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Components
 const SimpleHeader = () => (

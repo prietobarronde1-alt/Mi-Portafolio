@@ -1,11 +1,26 @@
 
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MotionWrapper from "@/components/MotionWrapper";
-import { SiWhatsapp, SiLinkedin } from "react-icons/si";
-import { FaPaperPlane, FaCode, FaChartLine, FaCheck } from "react-icons/fa";
+import { SiWhatsapp } from "react-icons/si";
+import { FaPaperPlane, FaCode, FaChartLine, FaCheck, FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 export default function ServicesPage() {
+    const SimpleHeader = () => (
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-end">
+                {/* Branding removed per user request */}
+                <a
+                    href="https://wa.me/5216642234345"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                    Contacto Directo
+                </a>
+            </div>
+        </header>
+    );
     const services = [
         {
             icon: FaPaperPlane,
@@ -38,9 +53,9 @@ export default function ServicesPage() {
 
     return (
         <div className="flex min-h-screen flex-col bg-white dark:bg-zinc-950 font-sans selection:bg-blue-100 dark:selection:bg-blue-900">
-            <Navbar />
+            <SimpleHeader />
 
-            <main className="flex-grow pt-24 pb-20 px-6">
+            <main className="flex-grow pt-32 pb-20 px-6">
                 <div className="max-w-6xl mx-auto space-y-24">
 
                     {/* Hero Section */}

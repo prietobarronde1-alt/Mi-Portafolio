@@ -1,177 +1,180 @@
-
 import Footer from "@/components/Footer";
 import MotionWrapper from "@/components/MotionWrapper";
 import { SiWhatsapp } from "react-icons/si";
-import { FaPaperPlane, FaCode, FaChartLine, FaCheck, FaArrowLeft } from "react-icons/fa";
+import { FaPaperPlane, FaCode, FaChartLine, FaCheck, FaStar, FaBolt, FaFingerprint } from "react-icons/fa";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+// Components
+const SimpleHeader = () => (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/50 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-end">
+            {/* Contact Button */}
+            <a
+                href="https://wa.me/5216642234345"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors border border-white/10 px-4 py-2 rounded-full hover:bg-white/5"
+            >
+                Contacto Directo
+            </a>
+        </div>
+    </header>
+);
+
+const BentoCard = ({ children, className = "", delay = 0 }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay }}
+        className={`group relative overflow-hidden bg-zinc-900/50 border border-white/5 rounded-3xl p-8 hover:border-white/10 hover:bg-zinc-800/50 transition-all duration-500 ${className}`}
+    >
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="relative z-10 h-full flex flex-col justify-between">
+            {children}
+        </div>
+    </motion.div>
+);
 
 export default function ServicesPage() {
-    const SimpleHeader = () => (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
-            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-end">
-                {/* Branding removed per user request */}
-                <a
-                    href="https://wa.me/5216642234345"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                    Contacto Directo
-                </a>
-            </div>
-        </header>
-    );
-    const services = [
-        {
-            icon: FaPaperPlane,
-            title: "Diseño de CV de Alto Impacto",
-            description: "Tu currículum no es un historial, es una herramienta de venta. Diseño documentos optimizados para ATS y visualmente impactantes que capturan la atención de los reclutadores en 6 segundos.",
-            features: ["Diagnóstico de perfil", "Redacción persuasiva", "Diseño moderno (PDF + Editable)", "Optimización de palabras clave ATS"],
-            color: "text-blue-500",
-            bg: "bg-blue-500/10",
-            price: "Desde $50 USD"
-        },
-        {
-            icon: FaCode,
-            title: "Portafolio Web Profesional",
-            description: "Diferénciate del 99% de los candidatos con un sitio web personal. Muestra tus proyectos, experiencia y marca personal con una plataforma interactiva como esta o la de Fernanda.",
-            features: ["Dominio personalizado (.com/.dev)", "Diseño único (No plantillas genéricas)", "Optimización móvil y SEO", "Integración con WhatsApp"],
-            color: "text-purple-500",
-            bg: "bg-purple-500/10",
-            price: "Cotización Personalizada"
-        },
-        {
-            icon: FaChartLine,
-            title: "Optimización de LinkedIn",
-            description: "Tu perfil de LinkedIn es tu landing page personal 24/7. Transformo tu perfil para que aparezcas en las búsquedas de los reclutadores y transmitas autoridad.",
-            features: ["Banner y titular estratégico", "Redacción de 'Acerca de'", "Estrategia de contenido básica", "Configuración de aptitudes"],
-            color: "text-emerald-500",
-            bg: "bg-emerald-500/10",
-            price: "Desde $40 USD"
-        }
-    ];
-
     return (
-        <div className="flex min-h-screen flex-col bg-white dark:bg-zinc-950 font-sans selection:bg-blue-100 dark:selection:bg-blue-900">
+        <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-pink-500/30">
             <SimpleHeader />
 
-            <main className="flex-grow pt-32 pb-20 px-6">
-                <div className="max-w-6xl mx-auto space-y-24">
+            <div className="fixed inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/10 rounded-full blur-[120px] animate-pulse"></div>
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/10 rounded-full blur-[120px] animate-pulse"></div>
+            </div>
 
-                    {/* Hero Section */}
-                    <section className="text-center space-y-8 relative">
-                        {/* Background Glow */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full pointer-events-none -z-10"></div>
+            <main className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto">
+                {/* Hero Section */}
+                <div className="text-center mb-24 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-400 mb-8"
+                    >
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        DISPONIBILIDAD LIMITADA FEBRERO
+                    </motion.div>
 
-                        <MotionWrapper>
-                            <div className="inline-block px-4 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-6">
-                                🚀 Potencia tu Carrera Profesional
+                    <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-none mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
+                        DISEÑO QUE <br />
+                        <span className="text-white">CONVIERTE.</span>
+                    </h1>
+
+                    <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                        Tu perfil profesional no debería ser aburrido. <br className="hidden md:block" />
+                        Transformo tu CV y Portafolio en una experiencia de alto impacto.
+                    </p>
+                </div>
+
+                {/* Bento Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 auto-rows-[minmax(0,1fr)]">
+
+                    {/* Card 1: Main Value Prop - CV */}
+                    <BentoCard className="md:col-span-2 md:row-span-1 min-h-[300px]" delay={0.1}>
+                        <div className="mb-6">
+                            <div className="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <FaPaperPlane />
                             </div>
-                            <h1 className="text-5xl md:text-7xl font-black text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">
-                                Deja de ser ignorado por <br className="hidden md:block" />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                                    los reclutadores.
-                                </span>
-                            </h1>
-                            <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-                                Ayudo a profesionales a destacar con CVs estratégicos, Portafolios Web y Perfiles de LinkedIn que <strong>sí generan entrevistas</strong>.
-                            </p>
+                            <h3 className="text-3xl font-bold text-white mb-2">CV de Alto Impacto</h3>
+                            <p className="text-zinc-400">Diseño estratégico optimizado para ATS. No es solo un documento, es tu pase a la entrevista.</p>
+                        </div>
+                        <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+                            <ul className="flex gap-4 text-xs text-zinc-500 font-mono">
+                                <li>PDF + EDITABLE</li>
+                                <li>REDACCIÓN PERSUASIVA</li>
+                            </ul>
+                            <span className="text-xl font-bold text-white">$50 USD</span>
+                        </div>
+                    </BentoCard>
 
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-                                <a
-                                    href="https://wa.me/5216642234345?text=Hola%20David,%20quiero%20mejorar%20mi%20perfil%20profesional.%20Me%20interesa%20información%20sobre..."
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-blue-500/25"
-                                >
-                                    <SiWhatsapp className="w-5 h-5" />
-                                    Agenda tu Asesoría Gratis
-                                </a>
-                                <a
-                                    href="#servicios"
-                                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium py-4 px-8 rounded-full transition-all"
-                                >
-                                    Ver Servicios
-                                </a>
+                    {/* Card 2: Web Portfolio - Tall */}
+                    <BentoCard className="md:col-span-1 md:row-span-2 bg-gradient-to-b from-zinc-900/80 to-black border-purple-500/20" delay={0.2}>
+                        <div className="mb-6">
+                            <div className="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <FaCode />
                             </div>
-                        </MotionWrapper>
-                    </section>
+                            <h3 className="text-3xl font-bold text-white mb-2">Portafolio Web</h3>
+                            <p className="text-zinc-400 text-sm mb-6">Diferénciate del 99% de los candidatos con un sitio web personal interactivo.</p>
 
-                    {/* Social Proof Divider */}
-                    <section className="border-y border-zinc-100 dark:border-zinc-900 py-10 bg-zinc-50/50 dark:bg-zinc-900/20">
-                        <div className="text-center">
-                            <p className="text-sm font-medium text-zinc-500 uppercase tracking-widest mb-6">Casos de Éxito Recientes</p>
-                            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                                {/* Logos placeholder or text representing success */}
-                                <span className="text-xl font-bold font-serif text-zinc-400">Fernanda Ruiz</span>
-                                <span className="text-xl font-bold font-serif text-zinc-400">Grupo Caliente</span>
-                                <span className="text-xl font-bold font-serif text-zinc-400">IZZI Telecom</span>
-                                <span className="text-xl font-bold font-serif text-zinc-400">MDY Contact Center</span>
+                            <div className="space-y-3">
+                                <div className="p-3 rounded-xl bg-zinc-800/50 border border-white/5 text-xs text-zinc-300">
+                                    <FaCheck className="inline mr-2 text-purple-400" /> Dominio Propio (.com)
+                                </div>
+                                <div className="p-3 rounded-xl bg-zinc-800/50 border border-white/5 text-xs text-zinc-300">
+                                    <FaCheck className="inline mr-2 text-purple-400" /> Diseño Único
+                                </div>
+                                <div className="p-3 rounded-xl bg-zinc-800/50 border border-white/5 text-xs text-zinc-300">
+                                    <FaCheck className="inline mr-2 text-purple-400" /> Modo Oscuro/Claro
+                                </div>
                             </div>
                         </div>
-                    </section>
+                        <div className="mt-auto">
+                            <p className="text-xs text-center text-zinc-500 mb-2">INVERSIÓN DESDE</p>
+                            <div className="text-3xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                                $200 USD
+                            </div>
+                        </div>
+                    </BentoCard>
 
-                    {/* Services Grid */}
-                    <section id="servicios" className="scroll-mt-24">
-                        <MotionWrapper delay={0.2}>
-                            <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-zinc-900 dark:text-zinc-100">
-                                Soluciones a tu Medida
-                            </h2>
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {services.map((service, idx) => (
-                                    <div key={idx} className="group relative bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
-                                        <div className={`w-14 h-14 rounded-xl ${service.bg} ${service.color} flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform`}>
-                                            <service.icon />
-                                        </div>
-                                        <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">{service.title}</h3>
-                                        <p className="text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
-                                            {service.description}
-                                        </p>
-                                        <ul className="space-y-3 mb-8">
-                                            {service.features.map((feature, fIdx) => (
-                                                <li key={fIdx} className="flex items-start gap-3 text-sm text-zinc-500 dark:text-zinc-400">
-                                                    <FaCheck className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-                                            <span className="text-sm font-medium text-zinc-400">Inversión estimada:</span>
-                                            <span className={`text-lg font-bold ${service.color}`}>{service.price}</span>
-                                        </div>
+                    {/* Card 3: Social Proof */}
+                    <BentoCard className="md:col-span-1 min-h-[250px]" delay={0.3}>
+                        <div className="flex flex-col h-full items-center justify-center text-center">
+                            <div className="flex -space-x-2 mb-4">
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs text-zinc-500">
+                                        User
                                     </div>
                                 ))}
                             </div>
-                        </MotionWrapper>
-                    </section>
+                            <p className="text-lg font-medium text-white">"Conseguí empleo en 2 semanas"</p>
+                            <p className="text-sm text-zinc-500 mt-1">- Fernanda Ruiz</p>
+                            <div className="flex gap-1 mt-3 text-yellow-500 text-xs">
+                                <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                            </div>
+                        </div>
+                    </BentoCard>
 
-                    {/* Final CTA */}
-                    <section className="bg-zinc-900 dark:bg-white rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-slate-700/20 dark:bg-slate-300/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-700/20 dark:bg-blue-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-
-                        <MotionWrapper>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white dark:text-zinc-900 mb-6">
-                                ¿Listo para dar el siguiente paso?
-                            </h2>
-                            <p className="text-lg text-zinc-300 dark:text-zinc-600 mb-10 max-w-2xl mx-auto">
-                                No dejes que un mal CV te cierre puertas. Escríbeme y analicemos tu perfil sin compromiso.
-                            </p>
-                            <a
-                                href="https://wa.me/5216642234345?text=Hola%20David,%20estoy%20listo%20para%20trabajar%20en%20mi%20perfil.%20¿Podemos%20hablar?"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-bold py-4 px-10 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all transform hover:scale-105"
-                            >
-                                <SiWhatsapp className="w-5 h-5" />
-                                Enviar Mensaje
-                            </a>
-                        </MotionWrapper>
-                    </section>
+                    {/* Card 4: LinkedIn */}
+                    <BentoCard className="md:col-span-1 bg-zinc-900" delay={0.4}>
+                        <FaFingerprint className="text-4xl text-emerald-500 mb-6 opacity-80" />
+                        <h3 className="text-2xl font-bold text-white">LinkedIn Makeover</h3>
+                        <p className="text-sm text-zinc-400 mt-2">Optimización de perfil para aparecer en búsquedas.</p>
+                        <div className="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                            <span className="text-xs text-emerald-400 font-mono">RANKING #1</span>
+                            <span className="font-bold text-white">$40 USD</span>
+                        </div>
+                    </BentoCard>
 
                 </div>
+
+                {/* CTA Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mt-24 text-center"
+                >
+                    <h2 className="text-4xl md:text-6xl font-black text-white mb-8">
+                        ¿LISTO PARA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">ASCENDER?</span>
+                    </h2>
+                    <a
+                        href="https://wa.me/5216642234345?text=Hola%20David,%20me%20interesa%20trabajar%20contigo."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-zinc-950 rounded-full font-bold text-lg hover:bg-zinc-200 transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
+                    >
+                        <SiWhatsapp className="w-5 h-5" />
+                        INICIAR CONVERSACIÓN
+                        <FaBolt className="w-4 h-4 text-yellow-500 group-hover:animate-pulse" />
+                    </a>
+                </motion.div>
             </main>
-            <Footer />
         </div>
     );
 }

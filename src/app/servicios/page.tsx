@@ -7,6 +7,7 @@ import { FaPaperPlane, FaCode, FaChartLine, FaCheck, FaStar, FaBolt, FaFingerpri
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 // Components
 const SimpleHeader = () => (
@@ -37,7 +38,7 @@ const BentoCard = ({ children, className = "", delay = 0 }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay }}
-        className={`group relative overflow-hidden bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/5 rounded-3xl p-8 hover:border-zinc-300 dark:hover:border-white/10 hover:shadow-xl dark:hover:bg-zinc-800/50 transition-all duration-500 ${className}`}
+        className={`group relative overflow-hidden bg-white/80 dark:bg-zinc-900/50 backdrop-blur-sm border border-zinc-200 dark:border-white/5 rounded-3xl p-8 hover:border-zinc-300 dark:hover:border-white/10 hover:shadow-xl dark:hover:bg-zinc-800/50 transition-all duration-500 ${className}`}
     >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="relative z-10 h-full flex flex-col justify-between">
@@ -48,13 +49,9 @@ const BentoCard = ({ children, className = "", delay = 0 }) => (
 
 export default function ServicesPage() {
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans selection:bg-pink-500/30 transition-colors duration-300">
+        <div className="min-h-screen font-sans selection:bg-pink-500/30 transition-colors duration-300">
+            <AnimatedBackground />
             <SimpleHeader />
-
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-500/5 dark:bg-purple-900/10 rounded-full blur-[120px] animate-pulse"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/5 dark:bg-blue-900/10 rounded-full blur-[120px] animate-pulse"></div>
-            </div>
 
             <main className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto">
                 {/* Hero Section */}
